@@ -63,8 +63,10 @@ def rss():
 
 @app.route('/')
 def home():
-    response = requests.get(settings.API_URL + '/getAdvertisements')
-    response2 = requests.get(settings.API_URL + '/getPosts')
+    # response = requests.get(settings.API_URL + '/getAdvertisements')
+    # response2 = requests.get(settings.API_URL + '/getPosts')
+    response = {}
+    response2 = {}
 
     ads = response.json()
     posts = response2.json()
