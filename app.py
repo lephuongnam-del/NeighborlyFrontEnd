@@ -5,7 +5,7 @@ from flask_bootstrap import Bootstrap
 import settings
 import requests
 import json
-from feedgen.feed import FeedGenerator
+# from feedgen.feed import FeedGenerator
 from flask import make_response
 from urllib.parse import urljoin
 from werkzeug.contrib.atom import AtomFeed
@@ -41,25 +41,25 @@ def feeds():
     # return feed.get_response()
 
 
-@app.route('/rss')
-def rss():
-    fg = FeedGenerator()
-    fg.title('Feed title')
-    fg.description('Feed Description')
-    fg.link(href='https://neighborly-client-v1.azurewebsites.net/')
+# @app.route('/rss')
+# def rss():
+#     fg = FeedGenerator()
+#     fg.title('Feed title')
+#     fg.description('Feed Description')
+#     fg.link(href='https://neighborly-client-v1.azurewebsites.net/')
     
 
-    response = requests.get(settings.API_URL + '/getAdvertisements')
-    ads = response.json()
+#     response = requests.get(settings.API_URL + '/getAdvertisements')
+#     ads = response.json()
 
-    for a in ads: 
-        fe = fg.add_entry()
-        fe.title(a.title)
-        fe.description(a.description)
+#     for a in ads: 
+#         fe = fg.add_entry()
+#         fe.title(a.title)
+#         fe.description(a.description)
 
-    response = make_response(fg.rss_str())
-    response.headers.set('Content-Type', 'application/rss+xml')
-    return response
+#     response = make_response(fg.rss_str())
+#     response.headers.set('Content-Type', 'application/rss+xml')
+#     return response
 
 @app.route('/')
 def home():
